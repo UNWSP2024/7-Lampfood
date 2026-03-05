@@ -1,10 +1,37 @@
-# Program #4: Coordinates
-# Write a distance function that will take two 3-dimensional coordinates (as input) 
-# and will return (as output) the distance between those points in space.  
-# The 3-dimensional coordinates must be stored as tuples.
+#Elliott Morris, 2/21/2026, coordinates.py
 
-# Now write a mainline that has the user enter the two tuples.  
-# The mainline calls the distance function and stores the distance in a variable.  The mainline then displays the distance.  
-# Also include exception handling to deal with faulty input.
-# The distance between two points (x1,y1,z1) and (x2, y2, z2) is 
-#    given by:   sqrt ((x2-x1)^2 + (y2 - y1)^2 + (z1 - z2)^2) 
+import math
+
+#function to calculate the distance
+def distance(p1, p2):
+
+    x1, y1, z1 = p1
+    x2, y2, z2 = p2
+
+    return math.sqrt((x1 - x2)**2 + (y1 - y2)**2 + (z1 - z2)**2)
+
+def main():
+    try:
+        #get user input
+        print("Enter the first 3d Coordinate:")
+        x1 = float(input("x1: "))
+        y1 = float(input("y1: "))
+        z1 = float(input("z1: "))
+
+        print("Enter the second 3d Coordinate:")
+        x2 = float(input("x2: "))
+        y2 = float(input("y2: "))
+        z2 = float(input("z2: "))
+
+        #call the distance function
+        dist = distance((x1, y1, z1), (x2, y2, z2))
+
+        print("\nDistance between the two points: ", dist)
+
+    except ValueError:
+        print("Please enter a valid number.")
+    except Exception as e:
+        print("An unexpected error occured:", e)
+
+if __name__ == "__main__":
+    main()
